@@ -1,20 +1,13 @@
 <template>
-  <div class="tasks">
+  <div>
     <h1>{{ msg }}</h1>
 
     <h3>Daily Tasks</h3>
-    <div :key="task" class="task" v-for="task in tasks">
-      <div class="complete" @click="task.done = !task.done">DONE</div>
-      <div class="option">{{ task.value }}</div>
-    </div>
-
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="various-reading" />
-      <label for="various-reading">15 Minutes of Various Reading</label>
-    </div>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="budget" />
-      <label for="budget">All Transactions in EveryDollar</label>
+    <div :key="task" class="task" v-for="task in dailyTasks">
+      <div class="task" v-if="!task.isDone">
+        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
+        <div class="option">{{ task.value }}</div>
+      </div>
     </div>
     <h3>Weekly Tasks</h3>
     <div class="task">
@@ -48,16 +41,21 @@ export default {
   },
   data() {
     return {
-      tasks: [
+      dailyTasks: [
         {
           name: "hebrew-reading",
           value: "5 Verses of Hebrew",
-          done: false
+          isDone: false
         },
         {
           name: "various-reading",
           value: "15 Minutes of Various Reading",
-          done: false
+          isDone: false
+        },
+        {
+          name: "budget",
+          value: "All Transactions in EveryDollar",
+          isDone: false
         }
       ],
       toDo: [],
@@ -73,11 +71,24 @@ h3 {
   margin: 40px 0 20px 0;
 }
 .task {
-  display: block;
-  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0.25em 0;
+}
+.tasks {
+  display: flex;
 }
 input {
   margin-right: 1.25em;
   margin-left: 1.25em;
+}
+.complete {
+  margin: auto;
+  margin-bottom: 1.25em;
+  height: 30px;
+  width: 50px;
+  background-color: navy;
+  color: white;
+  cursor: pointer;
 }
 </style>
