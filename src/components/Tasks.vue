@@ -3,32 +3,18 @@
     <h1>{{ msg }}</h1>
 
     <h3>Daily Tasks</h3>
-    <div :key="task" class="task" v-for="task in dailyTasks">
+    <div :key="task" class="task-wrapper" v-for="task in dailyTasks">
       <div class="task" v-if="!task.isDone">
-        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
         <div class="option">{{ task.value }}</div>
+        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
       </div>
     </div>
     <h3>Weekly Tasks</h3>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="goetchius" />
-      <label for="checkbox">1 Chapter of Goetchius</label>
-    </div>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="convo" />
-      <label for="checkbox">1 Intentional Conversation</label>
-    </div>
-    <div class="task">
-      <div>12 Hours of Software Development</div>
-
-      <input type="checkbox" class="checkbox" id="dev4" />
-      <label for="checkbox">4</label>
-
-      <input type="checkbox" class="checkbox" id="dev8" />
-      <label for="checkbox">8</label>
-
-      <input type="checkbox" class="checkbox" id="dev12" />
-      <label for="checkbox">12</label>
+    <div :key="task" class="task-wrapper" v-for="task in weeklyTasks">
+      <div class="task" v-if="!task.isDone">
+        <div class="option">{{ task.value }}</div>
+        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +44,23 @@ export default {
           isDone: false
         }
       ],
+      weeklyTasks: [
+        {
+          name: "goetchius",
+          value: "1 Chapter of Goetchius",
+          isDone: false
+        },
+        {
+          name: "convo",
+          value: "1 Intentional Conversation",
+          isDone: false
+        },
+        {
+          name: "dev",
+          value: "12 Hours of Software Development",
+          isDone: false
+        }
+      ],
       toDo: [],
       done: []
     };
@@ -68,27 +71,29 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 20px 0;
+  margin: 15px auto;
+  background: #42b983;
+  color: #f5f5f5;
+  width: 50vw;
 }
 .task {
   display: flex;
   flex-direction: column;
-  margin: 0.25em 0;
+  margin: auto;
+  background-color: lightgray;
+  width: 50vw;
 }
 .tasks {
   display: flex;
 }
-input {
-  margin-right: 1.25em;
-  margin-left: 1.25em;
-}
 .complete {
   margin: auto;
-  margin-bottom: 1.25em;
-  height: 30px;
+  height: 1e.25m;
   width: 50px;
-  background-color: navy;
+  background-color: #2c3e50;
   color: white;
   cursor: pointer;
+  border-radius: 15%;
+  box-shadow: 1px 1px 1px #222222;
 }
 </style>
