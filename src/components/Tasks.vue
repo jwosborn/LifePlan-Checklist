@@ -22,7 +22,7 @@
     </div>
     <div class="task">
       <input type="checkbox" class="checkbox" id="convo" />
-      <label for="checkbox">1 Meaningful Conversation</label>
+      <label for="checkbox">1 Intentional Conversation</label>
     </div>
     <div class="task">
       <div>12 Hours of Software Development</div>
@@ -47,7 +47,16 @@ export default {
   },
   data() {
     return {
-      toDo: []
+      tasks: [
+        {
+          name: "hebrew-reading",
+          value: "15 Minutes of Hebrew Reading",
+          done: false,
+          key: 1
+        }
+      ],
+      toDo: [],
+      done: []
     };
   }
 };
@@ -63,6 +72,7 @@ h3 {
   margin: 1em 0;
 }
 input {
-  margin-right: 1.5em;
+  margin-right: 1.25em;
+  margin-left: 1.25em;
 }
 </style>

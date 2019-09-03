@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Tasks msg="LifePlan Tasks" />
+    <Tasks msg="Life Plan Tasks" />
   </div>
 </template>
 
