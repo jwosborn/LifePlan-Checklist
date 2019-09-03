@@ -1,40 +1,20 @@
 <template>
-  <div class="tasks">
+  <div>
     <h1>{{ msg }}</h1>
 
     <h3>Daily Tasks</h3>
-    <div class="task">
-      <input type="checkbox" class="hebrew-reading" id="hebrew-reading" />
-      <label for="hebrew-reading">5 Verses of Hebrew</label>
-    </div>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="various-reading" />
-      <label for="various-reading">15 Minutes of Various Reading</label>
-    </div>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="budget" />
-      <label for="budget">All Transactions in EveryDollar</label>
+    <div :key="task" class="task-wrapper" v-for="task in dailyTasks">
+      <div class="task" v-if="!task.isDone">
+        <div class="option">{{ task.value }}</div>
+        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
+      </div>
     </div>
     <h3>Weekly Tasks</h3>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="goetchius" />
-      <label for="checkbox">1 Chapter of Goetchius</label>
-    </div>
-    <div class="task">
-      <input type="checkbox" class="checkbox" id="convo" />
-      <label for="checkbox">1 Intentional Conversation</label>
-    </div>
-    <div class="task">
-      <div>12 Hours of Software Development</div>
-
-      <input type="checkbox" class="checkbox" id="dev4" />
-      <label for="checkbox">4</label>
-
-      <input type="checkbox" class="checkbox" id="dev8" />
-      <label for="checkbox">8</label>
-
-      <input type="checkbox" class="checkbox" id="dev12" />
-      <label for="checkbox">12</label>
+    <div :key="task" class="task-wrapper" v-for="task in weeklyTasks">
+      <div class="task" v-if="!task.isDone">
+        <div class="option">{{ task.value }}</div>
+        <div class="complete" @click="task.isDone = !task.isDone">DONE</div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,12 +27,38 @@ export default {
   },
   data() {
     return {
-      tasks: [
+      dailyTasks: [
         {
           name: "hebrew-reading",
-          value: "15 Minutes of Hebrew Reading",
-          done: false,
-          key: 1
+          value: "5 Verses of Hebrew",
+          isDone: false
+        },
+        {
+          name: "various-reading",
+          value: "15 Minutes of Various Reading",
+          isDone: false
+        },
+        {
+          name: "budget",
+          value: "All Transactions in EveryDollar",
+          isDone: false
+        }
+      ],
+      weeklyTasks: [
+        {
+          name: "goetchius",
+          value: "1 Chapter of Goetchius",
+          isDone: false
+        },
+        {
+          name: "convo",
+          value: "1 Intentional Conversation",
+          isDone: false
+        },
+        {
+          name: "dev",
+          value: "12 Hours of Software Development",
+          isDone: false
         }
       ],
       toDo: [],
@@ -65,14 +71,29 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 20px 0;
+  margin: 15px auto;
+  background: #42b983;
+  color: #f5f5f5;
+  width: 50vw;
 }
 .task {
-  display: block;
-  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: lightgray;
+  width: 50vw;
 }
-input {
-  margin-right: 1.25em;
-  margin-left: 1.25em;
+.tasks {
+  display: flex;
+}
+.complete {
+  margin: auto;
+  height: 1e.25m;
+  width: 50px;
+  background-color: #2c3e50;
+  color: white;
+  cursor: pointer;
+  border-radius: 15%;
+  box-shadow: 1px 1px 1px #222222;
 }
 </style>
