@@ -3,10 +3,11 @@
     <h1>{{ msg }}</h1>
 
     <h3>Daily Tasks</h3>
-    <div class="task">
-      <input type="checkbox" class="hebrew-reading" id="hebrew-reading" />
-      <label for="hebrew-reading">5 Verses of Hebrew</label>
+    <div :key="task" class="task" v-for="task in tasks">
+      <div class="complete" @click="task.done = !task.done">DONE</div>
+      <div class="option">{{ task.value }}</div>
     </div>
+
     <div class="task">
       <input type="checkbox" class="checkbox" id="various-reading" />
       <label for="various-reading">15 Minutes of Various Reading</label>
@@ -50,9 +51,13 @@ export default {
       tasks: [
         {
           name: "hebrew-reading",
-          value: "15 Minutes of Hebrew Reading",
-          done: false,
-          key: 1
+          value: "5 Verses of Hebrew",
+          done: false
+        },
+        {
+          name: "various-reading",
+          value: "15 Minutes of Various Reading",
+          done: false
         }
       ],
       toDo: [],
