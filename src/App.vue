@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <Tasks msg="Life Plan Tasks" />
+    <Header />
+    <Tasks />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Tasks from "./components/Tasks.vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
-    Tasks
+    Tasks,
+    Header,
+    Footer
   }
 };
 </script>
@@ -23,5 +29,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1 {
+  margin: 0;
 }
 </style>
