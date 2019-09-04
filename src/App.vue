@@ -2,18 +2,21 @@
   <div id="app">
     <Header />
     <Tasks />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Tasks from "./components/Tasks.vue";
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
     Tasks,
-    Header
+    Header,
+    Footer
   }
 };
 </script>

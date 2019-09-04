@@ -86,6 +86,7 @@ h3 {
 }
 .complete {
   margin: auto;
+  margin-bottom: 0.5em;
   height: 1e.25m;
   width: 50px;
   background-color: #2c3e50;
