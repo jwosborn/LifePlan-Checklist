@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Tasks msg="Life Plan Tasks" />
+    <Header />
+    <Tasks />
   </div>
 </template>
 
 <script>
 import Tasks from "./components/Tasks.vue";
+import Header from "./components/Header.vue";
 
 export default {
   name: "app",
   components: {
-    Tasks
+    Tasks,
+    Header
   }
 };
 </script>

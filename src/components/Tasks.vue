@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
-
     <h3>Daily Tasks</h3>
     <div :key="task" class="task-wrapper" v-for="task in dailyTasks">
       <div class="task" v-if="!task.isDone">
